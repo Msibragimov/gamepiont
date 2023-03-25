@@ -1,0 +1,23 @@
+
+
+{% block content %}      
+
+
+<!--Login--> 
+<div class="container py-5">
+  <h1>Login</h1>
+  <form class="ui large form" method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <div>
+      <div>{{ login_form.email }}</div>
+      <div>{{ login_form.password }}</div>
+
+      <button class="ui fluid large teal submit button">Login</button>
+    </div>
+  
+  </form>
+  
+  <p class="text-center">Don't have an account? <a href="{% url 'register' %}">Signup</a>.</p>
+</div>
+
+{% endblock %}

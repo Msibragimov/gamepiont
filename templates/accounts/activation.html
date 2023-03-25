@@ -1,0 +1,11 @@
+{% autoescape off %}
+
+<div class="container">
+    <h2>Hi {{user.username}}</h2>
+    <br>
+    <h3>Please user the link below to verify your account</h3>
+    <br>                                          
+    <a href="http://{{domain}}{% url 'activate' uid=user.id token=token %}" dir="ltr" style="text-align:center;display:inline-block" target="_blank" data-saferedirecturl="https://www.google.com/url?q=https://notifications.google.com/g/p/AD-FnExXi1t3uditSobG8UpE6czDmgUP-FNtu5XSmMRC9EfZJyauvLw8Bp3GAD4OIfsMxW27E4nOKFkX3-ggP4jm4jNMcgLtziVjhGr5dqLxNA1-JTjF8yRweEUXvyeR89Rp4aL328b5U1Fsjv-hRBvbpmovSHzicFmO8ODsh_u2Ga7bxe9SY_hSBcIKOGnbKwpOEE-Qdx9Yw3h0XObggyBSU2VlrbTSA380NyR9Two5OTFesctigNAK3U1jBDFS1lyGtvvXx1iJpuYIonlc2qXbsDGfQFw1OoYXXSfC4ZNVYzBUIGaLExpblBaKcEHquOYlXw&amp;source=gmail&amp;ust=1647433047325000&amp;usg=AOvVaw3NkDVoNXsAUcRSBvwynDE1">
+    Activate your account
+   
+{% endautoescape %}
