@@ -14,10 +14,10 @@ class RegistrationForm(UserCreationForm):
 
 	def __init__(self, *args, **kwargs) -> None:
 		super(RegistrationForm, self).__init__(*args, **kwargs)
-		self.fields['username'].widget.attrs.update({'class':'form-control','placeholder':'Enter team name'})
-		self.fields['email'].widget.attrs.update({'class':'form-control','placeholder':'Enter email'})
-		self.fields['password1'].widget.attrs.update({'class':'form-control','placeholder':'Enter password'})
-		self.fields['password2'].widget.attrs.update({'class':'form-control','placeholder':'Confirm password'})
+		self.fields['username'].widget.attrs.update({'class':'form-control','placeholder':'Team Name'})
+		self.fields['email'].widget.attrs.update({'class':'form-control','placeholder':'Email'})
+		self.fields['password1'].widget.attrs.update({'class':'form-control','placeholder':'Password'})
+		self.fields['password2'].widget.attrs.update({'class':'form-control','placeholder':'Confirm Password'})
 
 
 class LoginUserForm(AuthenticationForm):
@@ -29,6 +29,7 @@ class LoginUserForm(AuthenticationForm):
 
 	def __init__(self, *args, **kwargs):
 		super(LoginUserForm, self).__init__(*args, **kwargs)
+		self.fields.pop('username')
 		self.fields['email'].widget.attrs.update({'class':'form-control','placeholder':'Email'})
 		self.fields['password'].widget.attrs.update({'class':'form-control','placeholder':'Password'})
 

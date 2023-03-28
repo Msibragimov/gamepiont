@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 
 from .model_fields import LowercaseEmailField
@@ -11,12 +11,12 @@ class Teammate(models.Model):
     last_name = models.CharField(max_length=50)
 
 
-class Team(AbstractUser):
+class Team(AbstractBaseUser):
     id = models.AutoField(primary_key=True)
     username = models.CharField(unique=True, max_length=50)
     email = LowercaseEmailField(unique=True)
     is_active = models.BooleanField(default=False)
-    bio = models.CharField(max_length=800, null=True)
+    bio = models.TextField(max_length=800, null=True)
     profile_photo = models.ImageField(upload_to='media/images/', null=True, default='photo.jpg')
     teammates = models.ForeignKey(Teammate, null=True, blank=True, on_delete=models.CASCADE)
     staff = models.BooleanField(default=True)

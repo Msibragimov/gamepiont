@@ -22,7 +22,7 @@ def login_request(request):
         if form.is_valid():
             email = form.cleaned_data.get('email')
             password = form.cleaned_data.get('password')
-            user = authenticate(email=email, password=password)
+            user = authenticate(username=email, password=password)
             if user is not None:
                 login(request, user)
                 messages.info(request, f"You are now logged in as {email}.")

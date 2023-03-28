@@ -34,7 +34,7 @@ ALLOWED_HOSTS = json.loads(os.environ['ALLOWED_HOSTS'])
 
 AUTH_USER_MODEL = 'account.Team'
 
-AUTHENTICATION_BACKENDS = ['account.backends.EmailBackend'] 
+AUTHENTICATION_BACKENDS = ['account.backends.EmailBackend']
 
 
 # Application definition
