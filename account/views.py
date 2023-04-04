@@ -5,12 +5,10 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.urls import reverse
 
-
 from .forms import RegistrationForm, LoginUserForm
 from .tasks import send_email_on_registration
 from .utils import generate_token
 from .models import Team
-
 
 
 def login_request(request):
@@ -38,7 +36,7 @@ def login_request(request):
 def log_user_out(request):
     if request.user.is_authenticated:
         logout(request)
-    return redirect('login')
+    return redirect('homepage')
 
 
 def register(request):
@@ -70,4 +68,4 @@ def activate_user(request, uid, token):
 
 def homepage(request):
     # Render the HTML template index.html with the data in the context variable
-    return render(request, 'index.html')
+    return render(request, 'accounts/index.html')

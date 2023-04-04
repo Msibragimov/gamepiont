@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv
 import json
-import sys
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -35,6 +34,8 @@ ALLOWED_HOSTS = json.loads(os.environ['ALLOWED_HOSTS'])
 AUTH_USER_MODEL = 'account.Team'
 
 AUTHENTICATION_BACKENDS = ['account.backends.EmailBackend']
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # Application definition
@@ -64,7 +65,7 @@ ROOT_URLCONF = 'cyberbase.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -139,10 +140,10 @@ CELERY_TIMEZONE = 'Asia/Tashkent'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'templates/'),
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 
