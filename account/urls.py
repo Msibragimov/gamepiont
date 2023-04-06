@@ -8,9 +8,12 @@ from . import views
 urlpatterns = [
     path('', views.homepage, name='homepage'),
     path('register/', views.register, name='register'),
+    path('check_email/', views.check_email, name='check_email'),
     path('login/', views.login_request, name='login'),
     path('logout/', views.log_user_out, name='logout'),
     path('activate/<int:uid>/<str:token>/', views.activate_user, name='activate'),
+
+    # path('profile/', views.profile, name='users-profile'),
 
     path('reset_password/', auth_views.PasswordResetView.as_view(template_name="accounts/password_reset.html"), name="password_reset"),
     path('reset_password_done/', auth_views.PasswordResetDoneView.as_view(template_name="accounts/password_reset_done.html"), name="password_reset_done"),

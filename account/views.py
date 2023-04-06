@@ -8,7 +8,7 @@ from django.urls import reverse
 from .forms import RegistrationForm, LoginUserForm
 from .tasks import send_email_on_registration
 from .utils import generate_token
-from .models import Team
+from .models import Account
 
 
 def login_request(request):
@@ -49,14 +49,18 @@ def register(request):
             current_site = get_current_site(request)
             send_email_on_registration(current_site.domain, user.id)
             messages.success(request, "Check your email to activate your account" )
-            return redirect('login')
+            return redirect('check_email')
         messages.error(request, "Unsuccessful registration. Invalid information.")
     form = RegistrationForm()
     return render(request, 'accounts/register.html', context={'register_form': form, 'next': request.GET.get('next') or 'homepage'})
 
 
+def check_email(request):
+    return render(request, 'accounts/check_email.html')
+
+
 def activate_user(request, uid, token):
-    user = Team.objects.filter(id=uid).first()
+    user = Account.objects.filter(id=uid).first()
     if user:
         if generate_token.check_token(user, token):
             user.is_active = True

@@ -4,7 +4,6 @@
 	<h1>Register</h1>
 	<form method="post" action="{% url 'register' %}">
 	{% csrf_token %}
-		<div>{{ register_form.username }}</div>
 		<div>{{ register_form.email }}</div>
 		<div>{{ register_form.password1 }}</div>
 		<div>{{ register_form.password2 }}</div>

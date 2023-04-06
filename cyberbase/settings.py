@@ -31,7 +31,7 @@ DEBUG = os.environ['DEBUG'].lower() == 'true'
 
 ALLOWED_HOSTS = json.loads(os.environ['ALLOWED_HOSTS'])
 
-AUTH_USER_MODEL = 'account.Team'
+AUTH_USER_MODEL = 'account.Account'
 
 AUTHENTICATION_BACKENDS = ['account.backends.EmailBackend']
 
@@ -147,8 +147,9 @@ STATICFILES_DIRS = [
 ]
 
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+
 
 
 # Default primary key field type
